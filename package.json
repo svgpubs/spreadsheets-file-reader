@@ -1,0 +1,63 @@
+{
+  "name": "spreadsheets-reader",
+  "version": "0.0.1",
+  "description": "format excel/csv/ods files into standard js objects on upload into browser",
+  "author": "Nicole Wheatley <nicole.wheatley@protonmail.com>",
+  "repository": "https://github.com/metachris/typescript-boilerplate",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "spreadsheets",
+    "spreadsheet",
+    "excel",
+    "csv",
+    "ods",
+    "xlsx",
+    "xls",
+    "xlsb",
+    "FileReader"
+  ],
+  "main": "./dist/tsc/main.js",
+  "types": "./dist/tsc/main.d.ts",
+  "browser": "./dist/esbuild/browser.js",
+  "bin": {
+    "my-cli-tool": "./dist/esbuild/cli.js"
+  },
+  "scripts": {
+    "cli": "ts-node src/cli.ts",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "test": "jest",
+    "clean": "rm -rf dist build package",
+    "ts-node": "ts-node",
+    "docs": "typedoc --entryPoints src/main.ts",
+    "build": "tsc -p tsconfig.json",
+    "build-all": "yarn clean && yarn build && yarn esbuild-node && yarn esbuild-browser",
+    "esbuild-browser": "esbuild src/browser.ts --bundle --minify --sourcemap=external --outfile=dist/esbuild/browser.js",
+    "esbuild-browser:dev": "esbuild src/browser.ts --bundle --outfile=dist/esbuild/browser.js",
+    "esbuild-browser:watch": "esbuild src/browser.ts --bundle --watch --outfile=dist/esbuild/browser.js",
+    "esbuild-node": "esbuild src/cli.ts --bundle --platform=node --minify --sourcemap=external --outfile=dist/esbuild/cli.js",
+    "esbuild-node:dev": "esbuild src/cli.ts --bundle --platform=node --sourcemap=external --outfile=dist/esbuild/cli.js",
+    "esbuild-node:watch": "esbuild src/cli.ts --bundle --platform=node --watch --sourcemap=external --outfile=dist/esbuild/cli.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@types/d3-dsv": "3.0.0",
+    "@types/jest": "^26.0.21",
+    "@types/node": "^15.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "babel-loader": "^8.2.3",
+    "esbuild": "^0.11.11",
+    "eslint": "^7.22.0",
+    "eslint-plugin-storybook": "0.5.2",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4",
+    "ts-node": "^9.1.1",
+    "typedoc": "^0.20.35",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "d3-dsv": "3.0.1",
+    "xlsx": "0.17.4"
+  }
+}
